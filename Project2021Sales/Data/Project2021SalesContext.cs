@@ -14,6 +14,8 @@ namespace Project2021Sales.Data
         {
         }
 
-        public DbSet<Project2021Sales.Models.Department> Department { get; set; }
+        public DbSet<Department> Department { get; set; }
+        public DbSet<Seller> seller { get; set; }
+        public DbSet<SalesRecord> SalesRecords { get; set; }
     }
 }
