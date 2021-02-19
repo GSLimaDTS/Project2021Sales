@@ -9,6 +9,6 @@ namespace Project2021Sales.Models.Enums
     {
         Pending = 0,
         Billed = 1,
-        Cancelled = 2,
+        Canceled = 2,
     }
 }

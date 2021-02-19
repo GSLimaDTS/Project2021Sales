@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Project2021Sales.Data;
+using Project2021Sales.Models;
 
 namespace Project2021Sales
 {
@@ -38,15 +39,17 @@ namespace Project2021Sales
 
             services.AddDbContext<Project2021SalesContext>(options =>
                     options.UseMySql(Configuration.GetConnectionString("Project2021SalesContext"), builder =>
-builder.MigrationsAssembly("Project2021Sales")));
+            builder.MigrationsAssembly("Project2021Sales")));
+            services.AddScoped<SeedingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedingService seedingService)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                seedingService.Seed();
             }
             else
             {
