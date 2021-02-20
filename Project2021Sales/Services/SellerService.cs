@@ -41,7 +41,7 @@ namespace Project2021Sales.Services
                 _context.Seller.Remove(obj);
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException e)
+            catch (DbUpdateException)
             {
                 throw new IntegrityException("Cannot delete a Seller that have registered Sales");
             }
